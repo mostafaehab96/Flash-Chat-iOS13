@@ -42,6 +42,8 @@ class ChatViewController: UIViewController {
                             self.messages.append(Message(sender: sender, body: body))
                             DispatchQueue.main.async {
                                 self.tableView.reloadData()
+                                let index = IndexPath(row: self.messages.count - 1, section: 0)
+                                self.tableView.scrollToRow(at: index, at: .top, animated: true)
                             }
                              
                         }
@@ -61,6 +63,7 @@ class ChatViewController: UIViewController {
                     print("Successfully saved data")
                 }
             }
+            messageTextfield.text = ""
         }
         
     }
